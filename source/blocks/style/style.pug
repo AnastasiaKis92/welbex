@@ -1,0 +1,4 @@
+mixin style(style)
+  - var isExternalStyle = /^(?:https?\:)?\/\//i;
+  - style = isExternalStyle.test(style) ? style : `/css/${style}.css`;
+  link(rel='stylesheet' href=style)

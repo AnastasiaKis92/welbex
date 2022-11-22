@@ -1,0 +1,10 @@
+.button
+  text-decoration none
+  color var(--color-white)
+  background-color var(--color-blue)
+  transition box-shadow var(--transition-duration-out)
+  &:hover
+    transition-duration var(--transition-duration-in)
+    @media (min-width point-l)
+      color var(--color-white)
+      box-shadow var(--button-hover)

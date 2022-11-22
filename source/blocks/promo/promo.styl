@@ -1,0 +1,168 @@
+@keyframes move
+  0%
+    transform: translate(0, 0)
+  100%
+    transform: translate(-30px, 30px)
+
+.promo
+  position relative
+  @media(max-width point-m - 1)
+    overflow hidden
+  &::before
+    content ''
+    position absolute
+    top -315px
+    width 19rem
+    aspect-ratio 1/1
+    background-color var(--color-purple)
+    border-radius 50%
+    opacity 0.5
+    filter blur(196px)
+    z-index -3
+    @media(max-width point-m - 1)
+      width 16rem
+      top 100px
+      right -160px
+  &::after
+      content ''
+      position absolute
+      top 75px
+      left -167px
+      width 19rem
+      aspect-ratio 1/1
+      background-color var(--color-red)
+      border-radius 50%
+      opacity 0.5
+      filter blur(196px)
+      z-index -1
+
+      @media(max-width point-m - 1)
+        top 255px
+        left -34px
+        width 13rem
+  &__bg
+    @media(max-width point-m - 1)
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background-image radial-gradient(238.53% 189.02% at 3.2% 3.49%, rgba(255, 246, 233, 0.1) 0%, rgba(26, 29, 35, 0.1) 26.62%, rgba(26, 29, 35, 0.1) 52.1%, rgba(26, 29, 35, 0.01) 70.17%, rgba(26, 29, 35, 0) 100%), image-set(url(../images/noise.webp) 1x, url(../images/noise@2x.webp) 2x)
+      background-repeat no-repeat
+      background-position center
+      background-size cover
+      backdrop-filter blur(7.5px)
+  &__grid-container
+    position relative
+    &::before
+      position absolute
+      content ''
+      top -55%
+      left 64%
+      width 3.75rem
+      aspect-ratio 1/1
+      background-image radial-gradient(64% 64% at 27.25% 26.5%, rgba(236, 208, 255, 0.64) 0%, rgba(161, 93, 207, 0.24) 59.67%, rgba(118, 49, 164, 0.208) 78.59%, rgba(86, 24, 128, 0.232) 100%)
+      border-radius 50%
+      box-shadow 3px 6px 27px -10px rgba(177, 118, 217, 0.25)
+      filter blur(5px)
+      backdrop-filter blur(2px)
+      z-index -2
+      @media (max-width point-m - 1)
+        top 53%
+        left 97%
+        width 2.5rem
+
+  &__title
+    display inline-block
+    margin-bottom 1.875rem
+    fontSize48()
+    font-weight 900
+    color transparent
+    background-image var(--color-gradient)
+    background-clip text
+    @media(max-width point-s - 1)
+      fontSize36()
+      margin-bottom 1rem
+  &__text
+    position relative
+    font-family 'Montserrat', 'Helvetica-Neue', 'Arial', sans-serif
+    fontSize18()
+
+  &__container
+    display flex
+    flex-direction column
+    align-items flex-end
+    text-align right
+    @media(max-width point-m - 1)
+      align-items flex-start
+      text-align left
+  &__gift
+    margin 1rem 0 2.5rem
+    fontSize18()
+    font-weight 500
+    & span
+      font-weight 700
+      color transparent
+      text-transform uppercase
+      background-image var(--color-gradient-secondary)
+      background-clip text
+      @media(max-width point-m - 1)
+        text-transform lowercase
+    @media(max-width point-s - 1)
+      margin-bottom 1rem
+  &__list
+    justify-content flex-end
+    @media(max-width point-s - 1)
+      column-gap 0rem
+      row-gap 0.875rem
+      justify-content flex-start
+
+  &__item
+    @media(min-width point-m)
+      width 50%
+  &__item-title
+    fontSize18()
+    font-weight 500
+    text-transform uppercase
+  &__item-title-mobile
+    position relative
+    width 140px
+    padding-left 1rem
+    font-family 'Montserrat', 'Helvetica-Neue', 'Arial', sans-serif
+    fontSize13()
+    letter-spacing 0.05em
+    text-transform uppercase
+    &::before
+      position absolute
+      content ''
+      top 50%
+      left 0
+      transform translateY(-50%)
+      width 0.625rem
+      height 1px
+      background-image var(--color-gradient-secondary)
+    @media(min-width point-s)
+      display none
+  &__item-text
+    font-family 'Montserrat', 'Helvetica-Neue', 'Arial', sans-serif
+  &__button
+    margin-top 3.8rem
+  &__animation
+    position absolute
+    content ''
+    bottom 10%
+    left 64%
+    width 1.75rem
+    aspect-ratio 1/1
+    background-image radial-gradient(64% 64% at 27.25% 26.5%, rgba(255, 208, 208, 0.48) 0%, rgba(212, 93, 93, 0.248) 59.67%, rgba(167, 49, 49, 0.264) 78.59%, rgba(130, 25, 25, 0.232) 100%)
+    border-radius 50%
+    box-shadow 3px 6px 27px -10px rgba(223, 125, 125, 0.25)
+    filter blur(2.5px)
+    backdrop-filter blur(2px)
+    z-index -2
+    animation move 4s ease-in-out alternate infinite
+    @media(max-width point-s - 1)
+      bottom -13%
+      left 8%
+      width 2.6rem
+      filter none

@@ -1,0 +1,58 @@
+cellWidth(count, i)
+  --cols i
+
+grid-items(count)
+  sizes = 's', 'm', 'l', 'xl', 'hd'
+  points = point-s, point-m, point-l, point-xl, point-hd
+  for i in (1..count)
+    &--xs--{i}
+      cellWidth(count, i)
+  for point, s in points
+    for i in (1..count)
+      @media (min-width point)
+        &--{sizes[s]}--{i}
+          cellWidth(count, i)
+
+.grid
+  --column-gap var(--gap)
+  --row-gap var(--gap)
+  --columns 12
+  --col-gaps calc((var(--columns) - 1) * var(--column-gap))
+  display flex
+  flex-wrap wrap
+  column-gap var(--column-gap)
+  row-gap var(--row-gap)
+  aligns = 'center', 'flex-end', 'flex-start', 'stretch', 'baseline'
+  justifies = 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'
+  for i in aligns
+    &--align-content--{i}
+      align-content unquote(i)
+    &--align-items--{i}
+      align-items unquote(i)
+  for i in justifies
+    &--justify--{i}
+      justify-content unquote(i)
+  @supports not (gap 0)
+    margin-x calc(var(--column-gap) / -2)
+    margin-y calc(var(--row-gap) / -2)
+  &--no-gap
+    --column-gap 0rem
+    --row-gap 0rem
+    @supports not (gap 0)
+      margin var(--column-gap)
+      & ^[-1]__cell
+        padding var(--column-gap)
+  &--no-gap--x
+    --column-gap 0rem
+  &--no-gap--y
+    --row-gap 0rem
+  &--columns--10
+    --columns 10
+  &__cell
+    width 100%
+    max-width calc((100% - var(--col-gaps)) / var(--columns) * var(--cols) + ((var(--col-gaps) + var(--column-gap)) / var(--columns) * var(--cols) - var(--column-gap)))
+    @supports not (gap 0)
+      width calc(100% / var(--columns) *  var(--cols))
+      padding-x calc(var(--column-gap) / 2)
+      padding-y calc(var(--row-gap) / 2)
+    grid-items(12)

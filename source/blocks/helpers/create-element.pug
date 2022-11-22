@@ -1,0 +1,20 @@
+mixin createElement(elem)
+  if typeof(elem) === 'string' || typeof(elem) === 'number' || elem === true
+    | !{elem}
+  else if elem === undefined || elem === null || elem === false
+    | 
+  else if Array.isArray(elem)
+    each item in elem
+      +createElement(item)
+  else
+    if elem.attr
+      -
+        for ( let item of Object.keys(elem.attr) ) {
+          attributes[item] = elem.attr[item]
+        }
+    if elem.tag === undefined || elem.tag === null || elem.tag === false
+      - elem.tag = 'div'
+    if elem.content
+      #{elem.tag}(class= elem.className)&attributes(attributes): +createElement(elem.content)
+    else
+      #{elem.tag}(class= elem.className)&attributes(attributes)

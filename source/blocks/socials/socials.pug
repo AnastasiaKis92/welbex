@@ -1,0 +1,6 @@
+mixin socials(settings, span, item)
+  ul.socials&attributes(attributes)
+    each i in item
+      li.socials__item
+        a(href='/' class= classes('socials__link', i.settings))
+          span.hidden= `Сайт Welbex в ${i.span}`

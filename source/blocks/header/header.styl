@@ -1,0 +1,35 @@
+.header
+  position relative
+  &::after
+    position absolute
+    content ''
+    top 38%
+    left 33%
+    width 5.2rem
+    aspect-ratio 1/1
+    background-image radial-gradient(64% 64% at 27.25% 26.5%, rgba(255, 208, 208, 0.536) 0%, rgba(212, 93, 93, 0.264) 59.67%, rgba(167, 49, 49, 0.248) 78.59%, rgba(130, 25, 25, 0.248) 100%)
+    border-radius 50%
+    box-shadow 3px 6px 27px -10px rgba(223, 125, 125, 0.25)
+    backdrop-filter blur(2px)
+    @media(max-width point-m - 1)
+      display none
+  &__logo
+    display block
+    width 9rem
+    height 1.5rem
+    mask-image var(--icon-logo)
+    mask-repeat no-repeat
+    mask-position center
+    mask-size cover
+    background-color var(--color-white)
+  &__logo-text
+    margin-top 0.625rem
+    font-family 'Montserrat', 'Helvetica-Neue', 'Arial', sans-serif
+    font-weight 300
+    fontSize10()
+  &__socials
+    display flex
+    justify-content flex-end
+  &__phone
+    margin-right 1.4rem
+    font-weight 500

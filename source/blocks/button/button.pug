@@ -1,0 +1,7 @@
+mixin button(settings = {})
+
+  -
+    const tag = settings.tag || 'button'
+    if (tag === 'button')
+      attributes.type = attributes.type || 'button'
+  #{tag}(class=classes('button', settings))&attributes(attributes): block

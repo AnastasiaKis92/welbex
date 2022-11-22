@@ -1,0 +1,38 @@
+extends /blocks/layout/layout
+
+block head
+ -
+  const pageTitle = 'Тестовое задание'
+  const pageDescription = 'Тестовое задание'
+
+
+block content
+  +pageSection.promo
+    .promo__bg
+    +grid({ justify:'space-between' }).promo__grid-container
+      +cell({ l:4, m:6 })
+        h1 Зарабатывайте больше
+        p.promo__title с&nbsp;WELBEX
+        .anim
+        p.promo__text Развиваем и&nbsp;контролируем продажи за&nbsp;вас
+      +cell({ l:4, m:6 }).promo__container
+        p.promo__gift Вместе #[span с&nbsp;бесплатной] #[span консультацией] мы дарим:
+        ul(class= gridClasses()).promo__list
+          li(class= cellClasses({ l:6, s:6, xs:6 })).promo__item
+            p.promo__item-title.hidden-xs Виджеты
+            p.promo__item-title-mobile Skype Аудит
+            p.promo__item-text.hidden-xs 30&nbsp;готовых решений
+          li(class= cellClasses({ l:6, s:6, xs:6 })).promo__item
+            p.promo__item-title.hidden-xs Dashboard
+            p.promo__item-title-mobile 30&nbsp;виджетов
+            p.promo__item-text.hidden-xs с&nbsp;показателями вашего бизнеса
+          li(class= cellClasses({ l:6, s:6, xs:6 })).promo__item
+            p.promo__item-title.hidden-xs Skype Аудит
+            p.promo__item-title-mobile Dashboard
+            p.promo__item-text.hidden-xs отдела продаж и&nbsp;CRM системы
+          li(class= cellClasses({ l:6, s:6, xs:6 })).promo__item
+            p.promo__item-title.hidden-xs 35&nbsp;дней
+            p.promo__item-title-mobile Месяц аmoCRM
+            p.promo__item-text.hidden-xs использования CRM
+        .promo__animation
+        a(href='/').button.promo__button.hidden-xs Получить консультацию

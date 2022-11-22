@@ -1,0 +1,30 @@
+include /blocks/socials/socials
+
++pageSection({ 'tag': 'header', 'header':true })
+  -
+    const navMenu = [
+      {'name': 'Услуги', 'href': '/'},
+      {'name': 'Виджеты', 'href': '/'},
+      {'name': 'Интеграции', 'href': '/'},
+      {'name': 'Кейсы', 'href': '/'},
+      {'name': 'Сертификаты', 'href': '/'},
+    ]
+
+    const socials = [
+      {settings: {'tg': true}, span: 'Телеграмм'},
+      {settings: {'vb': true}, span: 'Вайбер'},
+      {settings: {'wa': true}, span: 'Вотсапп'},
+    ]
+
+  +grid({ justify:'space-between' }).header
+    +cell({ l:2, m:3, s:3 }).hidden-s.hidden-xs
+      a(href='/').header__logo
+        span.hidden Логотип Welbex
+      p.header__logo-text крупный интегратор CRM в&nbsp;Росcии и&nbsp;ещё 8&nbsp;странах
+
+    +cell({ l:6, m:8, s:12 })
+      +menu(navMenu, 'nav')
+
+    +cell({ l:4 }).header__socials.hidden-m.hidden-s.hidden-xs
+      a(href='tel:+75555555555').header__phone.hidden-s.hidden-xs +7 555 555-55-55
+      +socials(settings, span, socials)

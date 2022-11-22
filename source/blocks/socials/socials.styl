@@ -1,0 +1,23 @@
+.socials
+  display flex
+  justify-content flex-end
+  column-gap 2rem
+  transition background-color var(--transition-duration-out)
+  &__link
+    display block
+    width 1.1rem
+    height 0.9rem
+    mask-repeat no-repeat
+    mask-position center
+    mask-size cover
+    background-color var(--color-white)
+    &--tg
+      mask-image var(--icon-tg)
+    &--vb
+      mask-image var(--icon-vb)
+    &--wa
+      mask-image var(--icon-wa)
+    &:hover
+      transition-duration var(--transition-duration-in)
+      @media (min-width point-l)
+        background-color var(--color-red)

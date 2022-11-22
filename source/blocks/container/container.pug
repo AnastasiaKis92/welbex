@@ -1,0 +1,4 @@
+mixin container(settings = {})
+  - settings.tag = settings.tag || 'div'
+  #{settings.tag}(class = classes('container', settings))&attributes(attributes)
+    block

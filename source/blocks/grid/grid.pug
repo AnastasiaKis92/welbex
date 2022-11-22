@@ -1,0 +1,22 @@
+-
+  const gridClasses = (settings = {}) => {
+    return classes('grid', settings)
+  }
+
+  const cellClasses = (settings = {}) => {
+    return classes('grid__cell', settings)
+  }
+
+mixin grid(settings = {})
+  - const tag = settings.tag ? settings.tag : 'div'
+
+  #{tag}(class!= gridClasses(settings))&attributes(attributes)
+    block
+
+mixin cell(settings = {})
+  -
+    const tag = settings.tag ? settings.tag : 'div'
+    settings.xs = settings.xs || 12
+
+  #{tag}(class!= cellClasses(settings))&attributes(attributes)
+    block

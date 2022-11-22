@@ -1,0 +1,22 @@
+include /blocks/helpers/classes
+include /blocks/grid/grid
+include /blocks/style/style
+include /blocks/container/container
+include /blocks/content/content
+include /blocks/page-section/page-section
+include /blocks/button/button
+include /blocks/menu/menu
+
+doctype html
+html.page(lang='ru')
+  include /blocks/head/head
+  body.page
+    include /blocks/header/header
+    main: block content
+    include /blocks/footer/footer
+  +style('rest')
+  if isHomePage
+    +style('home')
+  else
+    +style('inner')
+  script(src='scripts/main.min.js' type='module')

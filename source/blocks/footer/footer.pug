@@ -1,0 +1,63 @@
+include /blocks/socials/socials
+
+mixin footerItem(link)
+  li.footer__subitem
+    a(href='/')= link
+
++pageSection({ 'tag': 'footer', 'footer': true})
+  -
+    const about = [
+      {name: 'Партнёрская программа'},
+      {name: 'Вакансии'},
+    ]
+
+    const menuLeft = [
+      {name: 'Расчёт стоимости'},
+      {name: 'Услуги'},
+      {name: 'Виджеты'},
+      {name: 'Интеграции'},
+      {name: 'Наши клиенты'},
+    ]
+
+    const menuRight = [
+      {name: 'Кейсы'},
+      {name: 'Благодарственные письма'},
+      {name: 'Сертификаты'},
+      {name: 'Блог на Youtube'},
+      {name: 'Вопрос / Ответ'},
+    ]
+
+    const socials = [
+        {settings: {'tg': true}, span: 'Телеграмм'},
+        {settings: {'vb': true}, span: 'Вайбер'},
+        {settings: {'wa': true}, span: 'Вотсапп'},
+      ]
+
+  ul(class= gridClasses())
+    li(class= cellClasses({ l:3, m:3 })).footer__item
+      p.footer__title О компании
+      ul
+        each i in about
+          +footerItem(i.name)
+
+    li(class= cellClasses({ l:4, m:5, s:12 })).footer__item
+      p.footer__title Меню
+      +grid
+        +cell({ l:6, m:6, s:6, xs:6 })
+          ul
+            each i in menuLeft
+              +footerItem(i.name)
+        +cell({ l:6, m:6, s:6, xs:6 })
+          ul
+            each i in menuRight
+              +footerItem(i.name)
+
+    li(class= cellClasses({ l:5, m:4, s:12 })).footer__item
+      p.footer__title Контакты
+      a(href='tel:+75555555555').footer__phone +7 555 555-55-55
+      +socials(settings, span, socials).footer__socials
+      p.footer__address Москва, Путевой проезд 3с1, к 902
+
+  .footer__bottom
+    p.footer__bottom-text ©WELBEX 2022. Все права защищены.
+    a(href='/').footer__bottom-link Политика конфиденциальности

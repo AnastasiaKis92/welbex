@@ -1,0 +1,48 @@
+.footer
+  &__title
+    margin-bottom 1.25rem
+    font-weight 700
+    fontSize14()
+    text-transform uppercase
+    color var(--color-grey)
+    letter-spacing 0.05em
+    @media(max-width point-m - 1)
+      fontSize12()
+  &__item
+    &:last-of-type
+      text-align right
+      @media(max-width point-m - 1)
+        text-align left
+  &__subitem
+    & + &
+      margin-top 0.625rem
+    @media(max-width point-m - 1)
+      fontSize14()
+  &__phone
+    display inline-block
+    font-weight 500
+    margin-bottom 1.25rem
+    @media(max-width point-m - 1)
+      margin-bottom 0.5rem
+  &__socials
+    column-gap 0.75rem
+    margin-bottom 1.25rem
+    @media(max-width point-m - 1)
+      margin-bottom 0.7rem
+      justify-content flex-start
+      & .socials__link
+        width 1.5rem
+        height 1.25rem
+  &__address
+    @media(max-width point-m - 1)
+      fontSize14()
+  &__bottom
+    margin-top 1rem
+    font-family 'Montserrat', 'Helvetica-Neue', 'Arial', sans-serif
+    fontSize12()
+    text-align right
+    @media(max-width point-m - 1)
+      margin-top 3.5rem
+      text-align left
+  &__bottom-link
+    text-decoration underline

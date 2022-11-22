@@ -1,0 +1,35 @@
+-
+  const kebabize = (str) => {
+    return str.split('').map((letter, idx) => {
+      return letter.toUpperCase() === letter
+        ? `${idx !== 0 ? '-' : ''}${letter.toLowerCase()}`
+        : letter;
+    }).join('');
+  }
+
+  const classes = (className, settings = {}) => {
+    const classList = [className]
+    for ( let item of Object.entries(settings) ) {
+      if (item[0] !== 'tag' && item[1]) {
+        const mod = kebabize(item[0])
+        if (item[1] === true)
+          classList.push(`${className}--${mod}`)
+        if (typeof item[1] === 'string' || typeof item[1] === 'number')
+          classList.push(`${className}--${mod}--${item[1]}`)
+        if (Array.isArray(item[1])) {
+          classList.push(item[1].map(i => {
+            const o = {};
+            o[item[0]] = i;
+            return classes(className, o);
+          }).join(' '));
+        } else if (typeof item[1] === 'object') {
+          for (let i of Object.entries(item[1])) {
+            const o = {}
+            o[item[0]] = `${i[0]}-${i[1]}`
+            classList.push(classes(className, o))
+          }
+        }
+      }
+    }
+    return Array.from(new Set(classList.join(' ').split(' '))).join(' ');
+  }

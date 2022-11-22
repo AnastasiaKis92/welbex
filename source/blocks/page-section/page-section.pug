@@ -1,0 +1,18 @@
+include /blocks/container/container
+include /blocks/content/content
+
+mixin pageSection(settings = {})
+  -
+    const {empty, noContent} = settings;
+    delete settings.empty;
+    delete settings.noContent;
+    settings.tag = settings.tag || 'section';
+  if empty
+    #{settings.tag}(class = classes('page-section', settings))&attributes(attributes)
+      block
+  else if noContent
+    +container({ tag: settings.tag })(class = classes('page-section', settings))&attributes(attributes)
+      block
+  else
+    +container({ tag: settings.tag })(class = classes('page-section', settings))&attributes(attributes): .content
+      block

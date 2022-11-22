@@ -1,0 +1,46 @@
+mixin menuItem(item, className)
+  -
+    i = i || 0
+    if (typeof className === 'string') {
+      className = className.split(' ')
+    }
+    const settings = item.settings || {}
+    let itemClass = className.map(classItem => classes(`${classItem}__item`, settings).split(' ')).flat(1)
+
+    if (item.active) itemClass.push(...className.map(classItem => `${classItem}__item--active`))
+    if (item.sublist) itemClass.push(...className.map(classItem => `${classItem}__item--parent`))
+    if (i) itemClass.push(...className.map(classItem => `${classItem}__item--sub ${classItem}__item--sub-${i}`))
+    itemClass = [...new Set(itemClass)]
+  li(class= itemClass)
+    if item.href
+      a(href= item.href) !{item.name}
+    else
+      span !{item.name}
+    if item.sublist
+      - i += 1
+      +menuList(item.sublist, className)
+      - i -= 1
+
+mixin menuList(list, className)
+  -
+    if (Array.isArray(list)) items = list
+    if (typeof className === 'string') className = className.split(' ')
+    const listClass = className.map(item => {
+      if (i > 0) return `${item}__list ${item}__list--sub ${item}__list--sub-${i}`
+      else return `${item}__list`
+    }).join(' ')
+  ul(class= listClass)
+    each item in list
+      +menuItem(item, className)
+
+mixin menu(list, className)
+  -
+    if (typeof attributes.class === 'string') attributes.class = attributes.class.split(' ')
+    className = className || attributes.class.map((item) => item.split(' ')).flat(1)
+    attributes.class = ''
+  nav(class= className)&attributes(attributes)
+    -
+      if (Array.isArray(className)) {
+        className = className.filter((item) => item.indexOf('__') === -1)
+      }
+    +menuList(list, className)

@@ -1,0 +1,18 @@
+.nav
+  &__list
+    display flex
+    column-gap 1.875rem
+    @media(max-width point-l - 1)
+      justify-content flex-end
+    @media(max-width point-m - 1)
+      justify-content flex-start
+      column-gap 1rem
+  &__item
+    font-weight 500
+    fontSize16()
+    @media(max-width point-s - 1)
+      fontSize12()
+      text-transform uppercase
+    &:last-of-type
+      @media(max-width point-s - 1)
+        display none
